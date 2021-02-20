@@ -1,0 +1,32 @@
+{
+  "name": "moneytransferapp",
+  "version": "1.0.0",
+  "description": "money transfer application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "migrate": "./node_modules/.bin/sequelize db:migrate"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shubham-com/moneyTransferApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shubham-com/moneyTransferApp/issues"
+  },
+  "homepage": "https://github.com/Shubham-com/moneyTransferApp#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7",
+    "pg": "^8.5.1",
+    "router-express": "^1.5.2",
+    "sequelize": "^6.5.0"
+  }
+}
