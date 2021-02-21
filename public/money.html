@@ -1,13 +1,62 @@
-
 <html>
-    <body background="banking.jpg">
 
-    <h2>Welcome to money transfer App</h2>
- 
-    <p>View all customers to transfer money</p>
-    
-    <button onclick="document.location='view.html'">View Customers</button>
-    
-    </body>
-    </html>
-    
+<head>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+
+
+</head>
+<title></title>
+<script>
+    $(document).ready(function () {
+        var url = $(location).attr('href');
+        var parts = url.split("/");
+        var custIdFrom = parts[parts.length - 1];
+        $.ajax({
+            type: 'GET',
+            url: `http://localhost:3000/getTransferToList/${custIdFrom}`,
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 200) {
+                    document.write("<body bgcolor=red>");
+                    document.write("<table border= 1px solid black>");
+                    document.write("<thead>")
+                    document.write("<th>CUSTOMER ID </th>");
+                    document.write("<th>CUSTOMER NAME</th>");
+                    document.write("</thread>")
+                    data.msg.map((item, key) => {
+                        document.write("<tr>")
+                        document.write("<td>" + item.customerid + "</td>");
+                        document.write("<td>" + item.custName + "</td>");
+                        document.write(`<td><input type=radio value=${item.customerid} name=checked></input></td>`)
+                        document.write("</tr>")
+                    })
+                    document.write("</table>");
+                    document.write("Enter the amount you want to transfer: <input type=number id=amount/></br>");
+                    document.write(`<td><button type=button onclick=transferMoney(); class=primary btn btn-default>Transfer Money</button></td>`)
+                    document.write("</body>");
+                } else {
+                    document.write("<body bgcolor=red>");
+                    document.write(`<div>${data.msg}</div>`);
+                    document.write("</body>")
+                }
+            }
+        })
+    })
+    function transferMoney() {
+        let radioChecked = document.getElementsByName('checked');
+        radioChecked = Array.from(radioChecked);
+        radioChecked = radioChecked.filter(item => item.checked);
+        let amount = document.getElementById("amount");
+        console.log(amount);
+    }
+
+</script>
+
+</html>

@@ -1,5 +1,62 @@
 <html>
-<head></head>
+
+<head>
+  <style>
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
+  </style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+
+</head>
 <title></title>
-<body bgcolor="red"></body>
+
+
+
+<script>
+  $(document).ready(function () {
+    $.ajax({
+      type: 'GET',
+      url: 'http://localhost:3000/getAllCustomers',
+      dataType: "json",
+      success: function (data) {
+        if (data.status == 200) {
+          document.write("<body bgcolor=red>")
+          document.write("<table border= 1px solid black>");
+          document.write("<thead>")
+          document.write("<th>CUSTOMER ID </th>");
+          document.write("<th>CUSTOMER NAME</th>");
+          document.write("<th>EMAIL</th>");
+          document.write("<th>CURRENT AMOUNT</th>");
+          document.write("<th>ACTIVE</th>");
+          document.write("<th>ACTION</th>");
+          document.write("</thead>")
+          data.msg.map((item, key) => {
+            document.write("<tr>")
+            document.write("<td>" + item.customerid + "</td>");
+            document.write("<td>" + item.custName + "</td>");
+            document.write("<td>" + item.email + "</td>");
+            document.write("<td>" + item.currBalance + "</td>");
+            document.write("<td>" + item.active + "</td>");
+            document.write(`<td><button type=button onclick=getTranferToList(${item.customerid}); class=primary btn btn-default>Transfer Money</button></td>`);
+            document.write("</tr>");
+          });
+          document.write("</table>");
+          document.write("</body>")
+        } else {
+          document.write("<body bgcolor=red>");
+          document.write(`<div>${data.msg}</div>`);
+          document.write("</body>");
+        }
+
+      }
+    })
+  })
+  function getTranferToList(custId) {
+    window.location = `/tranferToList/${custId}`
+  }
+</script>
+
 </html>
