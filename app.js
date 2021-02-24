@@ -3,11 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const customer = require('./server/service/customerService');
-const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-//app.listen(process.env.PORT || 3000);
+app.listen(process.env.PORT || 3000);
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
 })
@@ -24,10 +23,6 @@ app.get('/getTransferToList/:custId', (req, res) => {
     customer.getTransferToList(req, res);
 })
 
-
-server.listen(port, () => {
-    console.log(`Listening on http://localhost:${port}/`);
-});
 
 
 
