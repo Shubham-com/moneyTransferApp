@@ -1,2 +1,2 @@
  
- web: npm migrate
+ web: npm start
