@@ -39,7 +39,7 @@
                         document.write("</tr>")
                     })
                     document.write("</table>");
-                    document.write("Enter the amount you want to transfer: <input type=number id=amount/></br>");
+                    document.write("Enter the amount you want to transfer: <input type=number id=amount placeholder=EntertheAmount /></br>");
                     document.write(`<td><button type=button onclick=transferMoney(); class=primary btn btn-default>Transfer Money</button></td>`)
                     document.write("</body>");
                 } else {
@@ -53,7 +53,7 @@
     function transferMoney() {
         let radioChecked = document.getElementsByName('checked');
         radioChecked = Array.from(radioChecked);
-        radioChecked = radioChecked.filter(item => item.checked);
+        radioChecked = (radioChecked || []).filter(item => item.checked);
         let amount = document.getElementById("amount");
         console.log(amount.value);
     }
