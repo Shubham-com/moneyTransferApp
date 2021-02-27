@@ -29,7 +29,8 @@
     "pg": "^8.5.1",
     "router-express": "^1.5.2",
     "pg-hstore": "^2.3.3",
-    "sequelize": "^6.5.0"
+    "sequelize": "^6.5.0",
+    "sequelize-cli": "^6.2.0"
   },
   "engines": {
     "node": "15.10.0"
