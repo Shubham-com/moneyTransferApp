@@ -6,12 +6,9 @@ module.exports = {
       schema: 'public',
       dialect: "postgres",
       ssl: process.env.ENV == "local" ? false : true,
-      // dialectOptions: {
-      //   ssl: {
-      //     require: true,
-      //     rejectUnauthorized: false // <<<<<< YOU NEED THIS
-      // }
-      // },
+       dialectOptions: {
+         ssl: true
+       },
       logging: true,
       seederStorage: "sequelize"
     }
