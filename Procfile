@@ -1,2 +1,2 @@
  
-web: npx sequelize db:migrate && npx sequelize db:seed:all && npm start
+web: npm sequelize db:migrate:all && npm sequelize db:seed:all && npm start
