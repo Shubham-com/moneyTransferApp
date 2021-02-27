@@ -19,7 +19,7 @@
   $(document).ready(function () {
     $.ajax({
       type: 'GET',
-      url: 'http://localhost:3000/getAllCustomers',
+      url: '/getAllCustomers',
       dataType: "json",
       success: function (data) {
         if (data.status == 200) {
