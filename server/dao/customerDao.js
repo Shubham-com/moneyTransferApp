@@ -54,7 +54,7 @@ class customerDao {
                     customerid: fromCustId
                 }
             }).then(data => {
-                data[0].currBalance =  parseInt(data[0].currBalance) + parseInt(amount);
+                data[0].currBalance =  parseInt(data[0].currBalance) - parseInt(amount);
                 data[0].save().then(data => {
                     cb(true, data)
                 }).catch(err => {
