@@ -23,6 +23,10 @@ app.get('/getTransferToList/:custId', (req, res) => {
     customer.getTransferToList(req, res);
 })
 
+app.post('/updateTransferredMoney/:toCustId/:amount/:fromCustId', (req, res) => {
+    customer.updateTransferredMoney(req, res);
+})
+
 
 
 
