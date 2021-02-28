@@ -55,7 +55,21 @@
         radioChecked = Array.from(radioChecked);
         radioChecked = (radioChecked || []).filter(item => item.checked);
         let amount = document.getElementById("amount");
-        console.log(amount.value);
+        var url = $(location).attr('href');
+        var parts = url.split("/");
+        var custIdFrom = parts[parts.length - 1];
+        $.ajax({
+            type: 'POST',
+            url: `/updateTransferredMoney/${radioChecked[0].value}/${amount.value}/${custIdFrom}`,
+            dataType: "json",
+            success: function (data) {
+                if (data.status == 200) {
+                    window.location = "/view";
+                } else {
+                    console.log(data.msg);
+                }
+            }
+        })
     }
 
 </script>
