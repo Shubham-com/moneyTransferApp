@@ -5,7 +5,7 @@ const customer = require('./server/service/customerService');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.listen(process.env.PORT||3000); 
+app.listen(process.env.PORT||3000);
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/public/index.html');
